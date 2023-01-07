@@ -38,6 +38,7 @@ const CardFactory = (book) => {
 
     const displayArea = document.getElementById("BookDisplay");
     const card = document.createElement("div");
+    card.setAttribute("class", "BookCard");
 
     let title = document.createElement("p");
     title.setAttribute("class", "BookTitle");

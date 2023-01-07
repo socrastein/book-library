@@ -1,0 +1,19 @@
+* {
+  text-align: center;
+}
+
+#BookDisplay {
+  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.BookCard {
+  padding: 1rem;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+}
