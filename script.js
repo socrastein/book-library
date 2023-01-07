@@ -1,9 +1,7 @@
-
-
 const BookFunctions = {
     summary() {
         return `${this.title}, by ${this.author}`
-    }
+    },
 }
 
 const BookFactory = (title, author, pages, read) => {
@@ -24,15 +22,14 @@ const Library = {
 
     addBook: (book) => Library.books.push(book),
 
-    delBook: (book) => {
+    removeBook: (book) => {
         for(i=0; i<Library.books.length; i++){
             if(book === Library.books[i]){
                 Library.books.splice(i, 1);
+                console.log('Removed ' + book.summary() + ' from library')
             }
         }
-        
     }
-
 }
 
 // Interacts with the DOM to create new div (card) elements that display
@@ -44,24 +41,33 @@ const CardFactory = (book) => {
 
     let title = document.createElement("p");
     title.setAttribute("class", "BookTitle");
+    title.innerHTML = book.title;
+
     let author = document.createElement("p");
     author.setAttribute("class", "BookAuthor");
+    author.innerHTML = book.author;
+
     let pages = document.createElement("p");
     pages.setAttribute("class", "BookPages");
+    pages.innerHTML = book.pages + " pages"
+
     let read = document.createElement("input");
-    pages.setAttribute("type", "checkbox");
-    pages.setAttribute("class", "BookRead");
+    let readLabel = document.createElement("label");
+    readLabel.innerHTML = "Read: ";
+    read.setAttribute("type", "checkbox");
+    read.setAttribute("class", "BookRead");
+
+    let cardElements = [title, author, pages, readLabel, read];
+    cardElements.forEach(element => card.appendChild(element));
+    displayArea.appendChild(card);
 }
 
 
-let book1 = BookFactory('Book', 'Author', 250, true);
-let book2 = BookFactory('Novel', 'Author', 300, false);
+let book1 = BookFactory('Book One', 'Author One', 250, true);
+let book2 = BookFactory('Book Two', 'Author Two', 300, false);
 
-console.log(book1.title);
-console.log(book2.summary());
 
 Library.addBook(book1);
 Library.addBook(book2);
-console.log(Library.books);
 
-Library.books.forEach(book => console.log(book.title, book.author));
+Library.books.forEach(book => CardFactory(book));
