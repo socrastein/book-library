@@ -57,6 +57,9 @@ const CardFactory = (book) => {
     readLabel.innerHTML = "Read: ";
     read.setAttribute("type", "checkbox");
     read.setAttribute("class", "BookRead");
+    if(book.read){
+        read.setAttribute("checked", '');
+    }
 
     let cardElements = [title, author, pages, readLabel, read];
     cardElements.forEach(element => card.appendChild(element));
@@ -64,11 +67,16 @@ const CardFactory = (book) => {
 }
 
 
-let book1 = BookFactory('Book One', 'Author One', 250, true);
-let book2 = BookFactory('Book Two', 'Author Two', 300, false);
+let book1 = BookFactory('Book 1', 'Author One', 250, true);
+let book2 = BookFactory('Book 2', 'Author Two', 300, false);
+let book3 = BookFactory('Book 3', 'Author Three', 150, true);
+let book4 = BookFactory('Book 4', 'Author Four', 600, false);
+
 
 
 Library.addBook(book1);
 Library.addBook(book2);
+Library.addBook(book3);
+Library.addBook(book4);
 
 Library.books.forEach(book => CardFactory(book));
