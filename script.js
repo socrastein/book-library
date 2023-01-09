@@ -59,8 +59,6 @@ const Library = {
 // Interacts with the DOM to create new div (card) elements that display
 // on the page
 const CardFactory = (book) => {
-    console.log('Creating Card');
-    var cardElements = undefined;
 
     const displayArea = document.getElementById("BookDisplay");
     const card = document.createElement("div");
@@ -80,17 +78,23 @@ const CardFactory = (book) => {
         pages.innerHTML = book.pages + " pages"
     } else pages.innerHTML = '';
 
-
+    // Read label and checkbox placed into a div so that
+    // they can be displayed on the same grid row
+    const readDiv = document.createElement("div");
     const read = document.createElement("input");
     const readLabel = document.createElement("label");
     readLabel.innerHTML = "Read: ";
     read.setAttribute("type", "checkbox");
     read.setAttribute("class", "BookRead");
-    if(book.read){
-        read.setAttribute("checked", '');
-    }
+    if(book.read){read.setAttribute("checked", '');}
+    readDiv.appendChild(readLabel);
+    readDiv.appendChild(read);
 
-    cardElements = [title, author, pages, readLabel, read];
+    const remove = document.createElement("img");
+    remove.setAttribute("src", "close.svg");
+    remove.addEventListener("click", () => {removeCard(card)});
+    
+    cardElements = [title, author, pages, readDiv, remove];
     cardElements.forEach(element => card.appendChild(element));
     displayArea.appendChild(card);
 }
@@ -113,3 +117,11 @@ function hideForm() {
     newRead.value = false;
     newRead.checked = false;
 }
+
+function removeCard(card) {
+    card.remove();
+}
+
+let CI = BookFactory('Consciousness Explained', 'Daniel Dennett', 450, true);
+Library.addBook(CI);
+CardFactory(CI);

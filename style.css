@@ -21,6 +21,10 @@
   width: 12rem;
   height: 16rem;
 
+  display: grid;
+  grid-template-rows: 1.5fr 1fr 1fr 1.5fr 1fr;
+  justify-items: center;
+
 }
 
 #newBook {
@@ -38,6 +42,30 @@
   border-width: 1px;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0,0,0,.5);
+}
+
+.BookTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.BookAuthor {
+
+}
+
+.BookCard img {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+}
+
+.BookCard img:hover {
+  transform: scale(1.1);
+  box-shadow: inset 0 0 12px red;
+}
+
+.BookPages {
+  font-size: .9rem;
 }
 
 #formContainer {
