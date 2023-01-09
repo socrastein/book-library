@@ -11,7 +11,33 @@
 <body>
 
 <h1>Book Library</h1>
+<div id="formContainer">
+    <form id="form">
 
+        <fieldset>
+            <label>Title</label>
+            <input type="text">
+        </fieldset>
+        <fieldset>
+            <label>Author</label>
+            <input type="text">
+        </fieldset>
+        <fieldset>
+            <label>Pages</label>
+            <input type="number">
+        </fieldset>
+
+        <fieldset>
+            <label>Read:</label>
+            <input type="checkbox">
+        </fieldset>
+
+        <fieldset id="addBook">
+            <button>Add to Library</button>
+        </fieldset>
+    </form>
+</div>
+<button id="newBook">+ BOOK</button>
 <div id="BookDisplay">
     <!-- Script will create BookCard div elements here -->
 </div>

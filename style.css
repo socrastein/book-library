@@ -14,8 +14,77 @@
 .BookCard {
   padding: 1rem;
   border-style: solid;
+  border-color: rgba(0,0,0,.2);
   border-width: 1px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+  box-shadow: 3px 3px 5px rgba(0,0,0,.5);
   width: 12rem;
   height: 16rem;
+  border-radius: 10px;
 }
+
+#newBook {
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: 0 0 3px;
+}
+
+#formContainer {
+  display: inline;
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+
+  top: 5rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+
+  background-color: white;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+fieldset {
+  border-style: none;
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  justify-items: start;
+  align-content: initial;
+}
+
+fieldset#addBook{
+  margin: 0 auto;
+  display: flex;  
+}
+
+#addBook button {
+  font-size: 1.2rem;
+  padding: 8px;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 0 2px;
+}
+
+button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: #90009020;
+  border-style: solid;
+  border-width: 2px;
+}
+
