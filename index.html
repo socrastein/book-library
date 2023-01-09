@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
+    
     <title>Book Library</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -12,30 +16,30 @@
 
 <h1>Book Library</h1>
 <div id="formContainer">
-    <form id="form">
+    <div id="form" >
 
         <fieldset>
-            <label>Title</label>
-            <input type="text">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" required>
         </fieldset>
         <fieldset>
-            <label>Author</label>
-            <input type="text">
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" required>
         </fieldset>
         <fieldset>
-            <label>Pages</label>
-            <input type="number">
+            <label for="pages">Pages</label>
+            <input type="number" name="pages" id="pages">
         </fieldset>
 
         <fieldset>
-            <label>Read:</label>
-            <input type="checkbox">
+            <label for="read">Read:</label>
+            <input type="checkbox" name="read" id="read">
         </fieldset>
 
         <fieldset id="addBook">
-            <button>Add to Library</button>
+            <button id="addBookButton">Add to Library</button>
         </fieldset>
-    </form>
+    </div>
 </div>
 <button id="newBook">+ BOOK</button>
 <div id="BookDisplay">

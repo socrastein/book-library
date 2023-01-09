@@ -1,5 +1,6 @@
 * {
   text-align: center;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 #BookDisplay {
@@ -19,7 +20,7 @@
   box-shadow: 3px 3px 5px rgba(0,0,0,.5);
   width: 12rem;
   height: 16rem;
-  border-radius: 10px;
+
 }
 
 #newBook {
@@ -31,13 +32,21 @@
   box-shadow: 0 0 3px;
 }
 
+.BookCard, #formContainer {
+  border-style: solid;
+  border-color: rgba(0,0,0,.2);
+  border-width: 1px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0,0,0,.5);
+}
+
 #formContainer {
-  display: inline;
+  display: none;
   position: absolute;
-  width: fit-content;
+  max-width: fit-content;
   height: fit-content;
 
-  top: 5rem;
+  top: 4.5rem;
   left: 0;
   right: 0;
   margin-left: auto;
@@ -45,10 +54,6 @@
   padding: 1rem;
 
   background-color: white;
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 10px;
-
 }
 
 #form {

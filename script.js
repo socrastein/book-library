@@ -1,3 +1,27 @@
+const newBook = document.getElementById("newBook");
+const addBookButton = document.getElementById("addBookButton");
+const BookDisplay = document.getElementById("BookDisplay");
+
+const formContainer = document.getElementById("formContainer");
+const newTitle = document.getElementById("title");
+const newAuthor = document.getElementById("author");
+const newPages = document.getElementById("pages");
+const newRead = document.getElementById("read");
+
+newBook.addEventListener('click', showForm);
+
+addBookButton.addEventListener('click', () => {
+    var newBook = undefined;
+    newBook = BookFactory(
+        newTitle.value, 
+        newAuthor.value, 
+        newPages.value,
+        newRead.checked);
+    Library.addBook(newBook);
+    CardFactory(newBook);
+    hideForm();
+})
+
 const BookFunctions = {
     summary() {
         return `${this.title}, by ${this.author}`
@@ -35,25 +59,30 @@ const Library = {
 // Interacts with the DOM to create new div (card) elements that display
 // on the page
 const CardFactory = (book) => {
+    console.log('Creating Card');
+    var cardElements = undefined;
 
     const displayArea = document.getElementById("BookDisplay");
     const card = document.createElement("div");
     card.setAttribute("class", "BookCard");
 
-    let title = document.createElement("p");
+    const title = document.createElement("p");
     title.setAttribute("class", "BookTitle");
     title.innerHTML = book.title;
 
-    let author = document.createElement("p");
+    const author = document.createElement("p");
     author.setAttribute("class", "BookAuthor");
     author.innerHTML = book.author;
 
-    let pages = document.createElement("p");
+    const pages = document.createElement("p");
     pages.setAttribute("class", "BookPages");
-    pages.innerHTML = book.pages + " pages"
+    if(book.pages){
+        pages.innerHTML = book.pages + " pages"
+    } else pages.innerHTML = '';
 
-    let read = document.createElement("input");
-    let readLabel = document.createElement("label");
+
+    const read = document.createElement("input");
+    const readLabel = document.createElement("label");
     readLabel.innerHTML = "Read: ";
     read.setAttribute("type", "checkbox");
     read.setAttribute("class", "BookRead");
@@ -61,22 +90,26 @@ const CardFactory = (book) => {
         read.setAttribute("checked", '');
     }
 
-    let cardElements = [title, author, pages, readLabel, read];
+    cardElements = [title, author, pages, readLabel, read];
     cardElements.forEach(element => card.appendChild(element));
     displayArea.appendChild(card);
 }
 
+function showForm() {
+    formContainer.style.setProperty("display", "inline");
+    newBook.style.setProperty("display", "none");
+    BookDisplay.style.setProperty("display", "none");
+    formContainer.focus();
+}
 
-let book1 = BookFactory('Book 1', 'Author One', 250, true);
-let book2 = BookFactory('Book 2', 'Author Two', 300, false);
-let book3 = BookFactory('Book 3', 'Author Three', 150, true);
-let book4 = BookFactory('Book 4', 'Author Four', 600, false);
+function hideForm() {
+    formContainer.style.setProperty("display", "none");
+    newBook.style.setProperty("display", "inline");
+    BookDisplay.style.setProperty("display", "flex");
 
-
-
-Library.addBook(book1);
-Library.addBook(book2);
-Library.addBook(book3);
-Library.addBook(book4);
-
-Library.books.forEach(book => CardFactory(book));
+    newTitle.value = '';
+    newAuthor.value = '';
+    newPages.value = '';
+    newRead.value = false;
+    newRead.checked = false;
+}
