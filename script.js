@@ -122,6 +122,6 @@ function removeCard(card) {
     card.remove();
 }
 
-let CI = BookFactory('Consciousness Explained', 'Daniel Dennett', 450, true);
+let CI = BookFactory('Consciousness Explained', 'Daniel Dennett', 528, true);
 Library.addBook(CI);
 CardFactory(CI);
